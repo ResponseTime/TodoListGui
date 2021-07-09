@@ -33,6 +33,8 @@ public class controller {
         while(r.next()){
             shown.getItems().add(r.getString(1));
         }
+       
+        
     }
     public void add(ActionEvent e) throws Exception{
         con();
