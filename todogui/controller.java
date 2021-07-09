@@ -27,6 +27,9 @@ public class controller {
     public void showTasks(ActionEvent e) throws Exception{
         con();
         r = stmt.executeQuery("SELECT TASK FROM TODO");
+        if(r.next()==false){
+            shown.getItems().add("No tasks found");
+        }
         while(r.next()){
             shown.getItems().add(r.getString(1));
         }
@@ -41,6 +44,7 @@ public class controller {
         return;
     }
     public void removeTask(ActionEvent e) throws Exception{
-
+        String tw = task.getText();
+        stmt.executeUpdate("DELETE FROM TODO WHERE TASK = '"+tw+"'");
     }
 }
