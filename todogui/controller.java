@@ -13,7 +13,7 @@ public class controller {
     private static ResultSet r;
     public static void con() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3308/todo", "root","root");
+        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3309/todo", "root","root");
         stmt = con.createStatement();
     }
     private String tk;
