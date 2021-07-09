@@ -26,6 +26,7 @@ public class controller {
     ListView<String> shown;
     @FXML
     public void showTasks(ActionEvent e) throws Exception{
+        con();
         r = stmt.executeQuery("SELECT TASK FROM TODO");
         while(r.next()){
             shown.getItems().add(r.getString(1));
