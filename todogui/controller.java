@@ -35,8 +35,8 @@ public class controller {
         }
     }
     public void add(ActionEvent e) throws Exception{
-        tk = task.getText();
         con();
+        tk = task.getText();
         to.ensureCapacity(500);
         to.add(tk);
         stmt.executeUpdate("INSERT INTO TODO VALUES ('"+count++ +"','"+tk+"')");
