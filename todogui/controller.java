@@ -30,10 +30,11 @@ public class controller {
         to.ensureCapacity(500);
         to.add(tk);
         stmt.executeUpdate("INSERT INTO TODO VALUES ('"+count++ +"','"+tk+"')");
+        shown.getItems().clear();
         return;
     }
     public void showTasks(ActionEvent e) throws Exception{
-            for(int i =0;i<to.size()+1;i++){
+            for(int i =0;i<to.size();i++){
                 shown.getItems().add(to.get(i));
             }
             
@@ -41,6 +42,6 @@ public class controller {
         
     }
     public void removeTask(ActionEvent e) throws Exception{
-        
+
     }
 }

@@ -6,6 +6,14 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch st",
+            "request": "launch",
+            "vmArgs": "--module-path C:/Users/callr/Downloads/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib --add-modules javafx.controls,javafx.fxml",
+            "mainClass": "todogui.st",
+            "projectName": "Todo gui_4e48821b"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -14,7 +22,6 @@
             "type": "java",
             "name": "Launch start",
             "request": "launch",
-            "vmArgs": "--module-path C:/Users/callr/Downloads/openjfx-16_windows-x64_bin-sdk/javafx-sdk-16/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "todogui.start",
             "projectName": "Todo gui_4e48821b"
         }
