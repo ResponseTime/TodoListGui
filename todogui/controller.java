@@ -46,6 +46,7 @@ public class controller {
     }
     
     public void removeTask(ActionEvent e) throws Exception{
-
+        String tw = task.getText();
+        stmt.executeUpdate("DELETE FROM TODO WHERE TASK = '"+tw+"'");
     }
 }
