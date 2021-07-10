@@ -17,7 +17,7 @@ public class st extends Application{
     }
     public static void main(String[] args) {
         controller con = new controller();
-        //con.setDaemon(true);
+        con.setDaemon(true);
         con.setPriority(Thread.MAX_PRIORITY);
         con.start();
         launch(args);
