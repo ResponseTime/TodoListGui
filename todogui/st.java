@@ -11,6 +11,9 @@ public class st extends Application{
         Parent root = FXMLLoader.load(getClass().getResource("first.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setX(60);
+        stage.setY(60);
+        stage.setAlwaysOnTop(true);
         stage.setTitle("Todo List");
         stage.setResizable(false);
         stage.show();
