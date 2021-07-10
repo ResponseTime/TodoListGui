@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 
 public class controller extends Thread {
     private String tk;
-    private static int count=0;
     @FXML
     TextField task;
     @FXML
@@ -34,7 +33,7 @@ public class controller extends Thread {
     public void add(ActionEvent e) throws Exception{
         shown.getItems().clear();
         tk = task.getText();
-        stmt.executeUpdate("INSERT INTO TODO VALUES ('"+count++ +"','"+tk+"')");
+        stmt.executeUpdate("INSERT INTO TODO VALUES ('"+tk+"')");
     }
     public void showTasks(ActionEvent e) throws Exception{
         r = stmt.executeQuery("SELECT TASK FROM TODO");
