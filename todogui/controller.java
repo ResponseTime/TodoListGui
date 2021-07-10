@@ -1,31 +1,42 @@
 package todogui;
 
 
-import java.util.ArrayList;
+
 import java.sql.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-public class controller {
-    private static Statement stmt;
-    private static ResultSet r;
-    public static void con() throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3309/todo", "root","root");
-        stmt = con.createStatement();
-    }
+public class controller extends Thread {
     private String tk;
-    private static ArrayList<String> to = new ArrayList<String>();
-    private static int count=1;
+    private static int count=0;
     @FXML
     TextField task;
     @FXML
     ListView<String> shown;
     @FXML
+    private static Statement stmt;
+    private static ResultSet r;
+    @Override
+    public void run(){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3309/todo", "root","root");
+            stmt = con.createStatement();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        
+   }
+    @FXML
+    public void add(ActionEvent e) throws Exception{
+        shown.getItems().clear();
+        tk = task.getText();
+        stmt.executeUpdate("INSERT INTO TODO VALUES ('"+count++ +"','"+tk+"')");
+    }
     public void showTasks(ActionEvent e) throws Exception{
-        con();
         r = stmt.executeQuery("SELECT TASK FROM TODO");
         if(r.next()==false){
             shown.getItems().add("No tasks found");
@@ -33,22 +44,11 @@ public class controller {
         while(r.next()){
             shown.getItems().add(r.getString(1));
         }
-       
-        
-    }
-    public void add(ActionEvent e) throws Exception{
-        con();
-        tk = task.getText();
-        to.ensureCapacity(500);
-        to.add(tk);
-        stmt.executeUpdate("INSERT INTO TODO VALUES ('"+count++ +"','"+tk+"')");
-        shown.getItems().clear();
-        return;
-    }
+    }  
     public void removeTask(ActionEvent e) throws Exception{
-        con();
         shown.getItems().clear();
         String tw = task.getText();
         stmt.executeUpdate("DELETE FROM TODO WHERE TASK = '"+tw+"'");
+        
     }
 }

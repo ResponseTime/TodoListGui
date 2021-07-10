@@ -12,9 +12,14 @@ public class st extends Application{
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Todo List");
+        stage.setResizable(false);
         stage.show();
     }
     public static void main(String[] args) {
+        controller con = new controller();
+        //con.setDaemon(true);
+        con.setPriority(Thread.MAX_PRIORITY);
+        con.start();
         launch(args);
     }
 }
